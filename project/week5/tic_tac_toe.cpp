@@ -6,7 +6,7 @@ int main() {
     char board[numCell][numCell]{};
     int x, y;
 
-    
+    //보드판 초기화
     for (x = 0; x < numCell; x++) {
         for (y = 0; y < numCell; y++) {
             board[x][y] = ' ';
@@ -16,14 +16,16 @@ int main() {
     int k = 0;
     char currentUser = 'x';
 
+    
     while (true) {
         
+        //누구 차례인지 출력
         currentUser = (k % 2 == 0) ? 'x' : 'O';
         cout << (currentUser == 'x' ? "첫번째 유저(x)" : "두번째 유저(O)") << "의 차례입니다 -> ";
         cout << "(x, y) 좌표를 입력하세요: ";
         cin >> x >> y;
 
-        
+        //유효성 검사
         if (x < 0 || x >= numCell || y < 0 || y >= numCell) {
             cout << x << "," << y << ": x와 y 둘 중 하나가 칸을 벗어납니다." << endl;
             continue;
@@ -35,6 +37,7 @@ int main() {
 
         board[x][y] = currentUser;
 
+        // 보드 출력
         for (int i = 0; i < numCell; i++) {
             cout << "---|---|---" << endl;
             for (int j = 0; j < numCell; j++) {
@@ -47,10 +50,10 @@ int main() {
         }
         cout << "---|---|---" << endl;
 
-        
+        //승리 조건 체크
         bool isWin = false;
 
-        
+        //가로와 세로 체크
         for (int i = 0; i < numCell; i++) {
             if (board[i][0] == currentUser && board[i][1] == currentUser && board[i][2] == currentUser) {
                 cout << "가로에 모두 돌이 놓였습니다!: " << currentUser << endl;
@@ -62,7 +65,7 @@ int main() {
             }
         }
 
-        
+        //대각선 체크
         if (board[0][0] == currentUser && board[1][1] == currentUser && board[2][2] == currentUser) {
             cout << "왼쪽 위에서 오른쪽 아래 대각선으로 모두 돌이 놓였습니다!: " << currentUser << endl;
             isWin = true;
@@ -79,6 +82,7 @@ int main() {
             break;
         }
 
+        //보드 찬 거 체크 
         bool full = true;
         for (int i = 0; i < numCell; i++) {
             for (int j = 0; j < numCell; j++) {
