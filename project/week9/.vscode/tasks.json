@@ -5,11 +5,9 @@
             "label": "C/C++: g++.exe build active file",
             "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
             "args": [
-                "-std=c++14",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                //"${fileDirname}\\**.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
